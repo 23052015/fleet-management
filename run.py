@@ -15,7 +15,21 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Fleet')
 
-
 disposition = SHEET.worksheet('disposition')
-available = disposition.get_all_values()
-print(available)
+code = disposition.col_values(3)
+
+cell_list = disposition.findall("2022")
+print(cell_list)
+
+def get_reservation_data():
+    """
+    Get reservation duration and vehicule code
+    """
+    print("Please enter the reservation period and vehicle code")
+    print("Reservaion must have customer name and code 4 letters")
+    print("Example: 25.12.2022 - 01.01.2022 FWAR")
+
+    reservation_str = input("Enter your data here: ")
+    
+
+get_reservation_data()

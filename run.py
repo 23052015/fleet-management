@@ -26,7 +26,7 @@ def menu():
     print("[1] show all cars")
 
     choice_str = int(input("Enter your data here: "))
-    return disposition.get_all_values()
+
 
 
 

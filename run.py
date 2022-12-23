@@ -4,7 +4,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import datetime 
-
+import pandas as pd
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -35,31 +35,49 @@ def menu():
         choice = int(input("Choose option: "))
         if choice == 1:
             show_all_cars()
-            break
+
         elif choice == 2:
-            mark_specific_cars()
-            break
+            print("type plate number and keyword sell/rent/service")
+            mark_specific_cars() 
+
         elif choice == 3:
             filter_cars()
-            break
+            
         elif choice == 4:
             update()
-            break
+
+        elif choice == 5:
+            break    
         else:
             print("Invalid choice. Choose 1-5")
 
 
 def show_all_cars():
-    print("All cars")
+    """
+    Show all cars 
+    """
+    for dispo in disposition.range("A4:D25"):
+        print(dispo.value)
+
 
 
 
 def mark_specific_cars():
-    print("Specific cars")
+    """
+    Mark cars which are to be sold, rented or sent
+    to service
+    """
+    # plate_nr = input(disposition.find("B%:B%"))
+    plate_nr = input(disposition.find(query)
+    sell = disposition.format("plate_nr", {"backgroundColor": {"red": 0.0}})
+    if plate_nr == disposition.range("B4:B")
+    
+    return True
+
 
 
 def filter_cars():
-    print("filter cars")
+    print("hjjhj")
 
 
 def update():

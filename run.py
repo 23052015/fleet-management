@@ -3,8 +3,10 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
-import datetime 
-import pandas as pd
+import gspread_formatting
+from gspread_formatting import *
+import os
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,6 +26,7 @@ def menu():
     Prints the menu and shows options to choose
     """
 
+
     while True:
         print("1. show all cars")
         print("2. Mark cars for sell, rent, service")
@@ -32,24 +35,26 @@ def menu():
         print("5. Exit")
 
 
-        choice = int(input("Choose option: "))
-        if choice == 1:
+        choice = input("Choose option: ")
+        if choice == '1':
             show_all_cars()
 
-        elif choice == 2:
-            print("type plate number and keyword sell/rent/service")
-            mark_specific_cars() 
+        elif choice == '2':
+            print("Type plate number\n")
+            find_specific_cars()
 
-        elif choice == 3:
+        elif choice == '3':
             filter_cars()
             
-        elif choice == 4:
+        elif choice == '4':
             update()
 
-        elif choice == 5:
+        elif choice == '5':
             break    
         else:
             print("Invalid choice. Choose 1-5")
+            pass
+            
 
 
 def show_all_cars():
@@ -60,22 +65,31 @@ def show_all_cars():
         print(dispo.value)
 
 
-
-
-def mark_specific_cars():
+def find_specific_cars():
     """
-    Mark cars which are to be sold, rented or sent
-    to service
+    Finds car based on search criteria
     """
-    # plate_nr = input(disposition.find("B%:B%"))
-    plate_nr = input(disposition.find(query)
-    sell = disposition.format("plate_nr", {"backgroundColor": {"red": 0.0}})
-    if plate_nr == disposition.range("B4:B")
-    
-    return True
+    plate_nr = input()
+    plate_nr_list = disposition.findall(plate_nr)
+    # while True
+    for plate_nr in plate_nr_list:
+        if (plate_nr in plate_nr_list):
+            print(f"Choose operation: Sell/Service/Rent for {plate_nr}\n")
+            print("2.1 sell")
+            print("2.2 rent")
+            print("2.3 service")
+            operation = input("Choose operation: ")
+            if operation == "2.1":
+                plate_nr.update_cell(backgroundColor=(1, 0.9, 0.9))
 
+            # mark_car(operation)
+        else:
+            print("Invalid Choice, please try again")
 
-
+"""def mark_car(data):
+        print("whatever the user types in ===>", data )
+        print("")
+"""
 def filter_cars():
     print("hjjhj")
 

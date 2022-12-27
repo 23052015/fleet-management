@@ -5,7 +5,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import gspread_formatting
 from gspread_formatting import *
-import os
+import pandas as pd
 
 
 SCOPE = [
@@ -30,10 +30,9 @@ def menu():
     while True:
         print("1. show all cars")
         print("2. Mark cars for sell, rent, service")
-        print("3. Filter by model, category/plate/number/code/transmission")
+        print("3. Filter code/n")
         print("4. Update fleet")
         print("5. Exit")
-
 
         choice = input("Choose option: ")
         if choice == '1':
@@ -44,19 +43,18 @@ def menu():
             find_specific_cars()
 
         elif choice == '3':
+            print("Type the code: ")
             filter_cars()
             
         elif choice == '4':
-            update()
+            update_car_list()
 
         elif choice == '5':
             break    
         else:
             print("Invalid choice. Choose 1-5")
-            pass
             
-
-
+            
 def show_all_cars():
     """
     Show all cars 
@@ -67,9 +65,9 @@ def show_all_cars():
 
 def find_specific_cars():
     """
-    Finds car based on search criteria
+    Finds car based on plate-nr input 
     """
-    plate_nr = input()
+    plate_nr = input("")
     plate_nr_list = disposition.findall(plate_nr)
     # while True
     for plate_nr in plate_nr_list:
@@ -80,25 +78,37 @@ def find_specific_cars():
             print("2.3 service")
             operation = input("Choose operation: ")
             if operation == "2.1":
-                plate_nr.update_cell(backgroundColor=(1, 0.9, 0.9))
+                # format(plate_nr, {
+                #     "backgroundColor": {
+                #         "red": 5.5}})
+                print("===> 2.1 selected")
+                fmt = cellFormat(
+                backgroundColor=color(1, 0.9, 0.9)
+                 )
 
-            # mark_car(operation)
+                format_cell_range(disposition, "A2", fmt)
+               
         else:
             print("Invalid Choice, please try again")
 
-"""def mark_car(data):
-        print("whatever the user types in ===>", data )
-        print("")
-"""
+
 def filter_cars():
-    print("hjjhj")
+    """
+    Filter cars based on codes and display them
+    """
+    code = input("Type your code: ")
+    code_list = disposition.findall(code)
+    for code in code_list:
+        if (code in code_list):
+            print(f"This are the cars with code {code}")    
 
 
-def update():
-    print("update cars")
+def update_car_list():
+    """
+    Updates cars in list 
+    """
+    new_car = input("") 
+    disposition.append_rows(1)
 
-
+  
 menu()
-
-
-

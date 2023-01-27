@@ -26,7 +26,6 @@ def menu():
     Prints the menu and shows options to choose
     """
 
-
     while True:
         print("1. show all cars")
         print("2. Mark cars for sell, rent, service")

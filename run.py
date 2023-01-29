@@ -85,7 +85,7 @@ def find_specific_cars():
                 backgroundColor=color(1, 0.9, 0.9)
                  )
 
-                format_cell_range(disposition, "A2", fmt)
+                format_cell_range(disposition,, fmt)
                
         else:
             print("Invalid Choice, please try again")

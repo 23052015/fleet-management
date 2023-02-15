@@ -82,10 +82,10 @@ def find_specific_cars():
                 #         "red": 5.5}})
                 print("===> 2.1 selected")
                 fmt = cellFormat(
-                backgroundColor=color(1, 0.9, 0.9)
+                backgroundColor=color(255, 0, 0)
                  )
 
-                format_cell_range(disposition,, fmt)
+                format_cell_range(disposition, plate_nr, fmt)
                
         else:
             print("Invalid Choice, please try again")

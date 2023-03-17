@@ -83,7 +83,7 @@ def find_specific_cars():
                 print("===> 2.1 selected")
                 fmt = cellFormat(
                 backgroundColor=color(255, 0, 0)
-                 )
+                )
 
                 format_cell_range(disposition, plate_nr, fmt)
                
@@ -106,8 +106,9 @@ def update_car_list():
     """
     Updates cars in list 
     """
-    new_car = input("") 
-    disposition.append_rows(1)
+    new_car = input("")
+    new_car_in_list = new_car.split(",") 
+    disposition.append_rows(new_car)
 
   
 menu()

@@ -68,7 +68,7 @@ def find_specific_cars():
     """
     plate_nr = input("")
     plate_nr_list = disposition.findall(plate_nr)
-    # while True
+    # while True 4
     for plate_nr in plate_nr_list:
         if (plate_nr in plate_nr_list):
             print(f"Choose operation: Sell/Service/Rent for {plate_nr}\n")
